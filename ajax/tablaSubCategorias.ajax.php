@@ -74,7 +74,7 @@ class TablaSubCategorias{
 			$valor2 = $subcategorias[$i]["ruta"];
 
 			$cabeceras = ControladorCabeceras::ctrMostrarCabeceras($item2, $valor2);
-
+				if($cabeceras!=null)
   			if($cabeceras["portada"] != ""){
 
   				$imagenPortada = "<img src='".$cabeceras["portada"]."' class='img-thumbnail imgPortadaSubCategorias' width='100px'>";
@@ -122,10 +122,10 @@ class TablaSubCategorias{
 	  		/*=============================================
   			CREAR LAS ACCIONES
   			=============================================*/
-
+				if($cabeceras!=null)
   			$acciones = "<div class='btn-group'><button class='btn btn-warning btnEditarSubCategoria' idSubCategoria='".$subcategorias[$i]["id"]."' data-toggle='modal' data-target='#modalEditarSubCategoria'><i class='fa fa-pencil'></i></button><button class='btn btn-danger btnEliminarSubCategoria' idSubCategoria='".$subcategorias[$i]["id"]."' imgOferta='".$subcategorias[$i]["imgOferta"]."' rutaCabecera='".$subcategorias[$i]["ruta"]."' imgPortada='".$cabeceras["portada"]."'><i class='fa fa-times'></i></button></div>";
 
-
+			if($cabeceras!=null)
 			 $datosJson .=  '
 			 [
 		      "'.($i+1).'",

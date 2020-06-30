@@ -49,33 +49,34 @@ class TablaVentas{
 		$valor2 = $ventas[$i]["id_usuario"];
 
 		$traerCliente = ControladorUsuarios::ctrMostrarUsuarios($item2, $valor2);
+		if($traerCliente!=null){
+			$cliente = $traerCliente["nombre"];
 
-		$cliente = $traerCliente["nombre"];
+			/*=============================================
+			TRAER FOTO CLIENTE
+			=============================================*/
 
-		/*=============================================
-		TRAER FOTO CLIENTE
-		=============================================*/
+			if($traerCliente["foto"] != ""){
 
-		if($traerCliente["foto"] != ""){
+				$imgCliente = "<img class='img-circle' src='".$traerCliente["foto"]."' width='70px'>";
 
-			$imgCliente = "<img class='img-circle' src='".$traerCliente["foto"]."' width='70px'>";
+			}else{
 
-		}else{
+				$imgCliente = "<img class='img-circle' src='vistas/img/usuarios/default/anonymous.png' width='70px'>";
+			}
 
-			$imgCliente = "<img class='img-circle' src='vistas/img/usuarios/default/anonymous.png' width='70px'>";
-		}
+			/*=============================================
+			TRAER EMAIL CLIENTE
+			=============================================*/
 
-		/*=============================================
-		TRAER EMAIL CLIENTE
-		=============================================*/
+			if($ventas[$i]["email"] == ""){
 
-		if($ventas[$i]["email"] == ""){
+				$email = $traerCliente["email"];
 
-			$email = $traerCliente["email"];
+			}else{
 
-		}else{
-
-			$email = $ventas[$i]["email"];
+				$email = $ventas[$i]["email"];
+			}
 		}
 
 		/*=============================================

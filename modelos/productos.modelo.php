@@ -16,6 +16,8 @@ class ModeloProductos{
 
 		return $stmt -> fetchAll();
 
+		var_dump($stmt);
+
 		$stmt-> close();
 
 		$stmt = null;
@@ -103,7 +105,6 @@ class ModeloProductos{
 	=============================================*/
 
 	static public function mdlMostrarProductos($tabla, $item, $valor){
-
 		if($item != null){
 
 			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE $item = :$item");

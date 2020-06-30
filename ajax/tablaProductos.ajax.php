@@ -13,17 +13,20 @@ require_once "../controladores/cabeceras.controlador.php";
 require_once "../modelos/cabeceras.modelo.php";
 
 class TablaProductos{
+	
 
   /*=============================================
   MOSTRAR LA TABLA DE PRODUCTOS
   =============================================*/ 
 
   public function mostrarTablaProductos(){	
-
+		
   	$item = null;
   	$valor = null;
 
   	$productos = ControladorProductos::ctrMostrarProductos($item, $valor);
+
+	
 
   	$datosJson = '
 
@@ -40,7 +43,7 @@ class TablaProductos{
 			$valor = $productos[$i]["id_categoria"];
 
 			$categorias = ControladorCategorias::ctrMostrarCategorias($item, $valor);
-
+			if($categorias!=null)
 			if($categorias["categoria"] == ""){
 
 				$categoria = "SIN CATEGORÍA";
@@ -96,7 +99,7 @@ class TablaProductos{
 			$valor3 = $productos[$i]["ruta"];
 
 			$cabeceras = ControladorCabeceras::ctrMostrarCabeceras($item3, $valor3);
-
+			if($cabeceras!=null)
 			if($cabeceras["portada"] != ""){
 
   				$imagenPortada = "<img src='".$cabeceras["portada"]."' class='img-thumbnail imgPortadaProductos' width='100px'>";
@@ -119,7 +122,7 @@ class TablaProductos{
   			if($productos[$i]["multimedia"] != null){
 
   				$multimedia = json_decode($productos[$i]["multimedia"],true);
-
+					if($multimedia!=0)
   				if($multimedia[0]["foto"] != ""){
 
   					$vistaMultimedia = "<img src='".$multimedia[0]["foto"]."' class='img-thumbnail imgTablaMultimedia' width='100px'>";
@@ -229,14 +232,14 @@ class TablaProductos{
 	  		/*=============================================
   			TRAER LAS ACCIONES
   			=============================================*/
-
+				if($productos!=null&&$cabeceras!=null)
   			$acciones = "<div class='btn-group'><button class='btn btn-warning btnEditarProducto' idProducto='".$productos[$i]["id"]."' data-toggle='modal' data-target='#modalEditarProducto'><i class='fa fa-pencil'></i></button><button class='btn btn-danger btnEliminarProducto' idProducto='".$productos[$i]["id"]."' imgOferta='".$productos[$i]["imgOferta"]."' rutaCabecera='".$productos[$i]["ruta"]."' imgPortada='".$cabeceras["portada"]."' imgPrincipal='".$productos[$i]["portada"]."'><i class='fa fa-times'></i></button></div>";
 
   			/*=============================================
   			CONSTRUIR LOS DATOS JSON
   			=============================================*/
 
-
+			if($cabeceras!=null)
 			$datosJson .='[
 					
 					"'.($i+1).'",
@@ -258,8 +261,8 @@ class TablaProductos{
 				  	"'.$tipoOferta.'",
 				  	"'.$valorOferta.'",
 				  	"'.$imgOferta.'",
-				  	"'.$productos[$i]["finOferta"].'",			
-				  	"'.$acciones.'"	   
+				  	"'.$productos[$i]["finOferta"].'",
+				  	"'.$acciones.'"
 
 			],';
 
@@ -272,6 +275,7 @@ class TablaProductos{
 		}';
 
 		echo $datosJson;
+		
 
   }
 

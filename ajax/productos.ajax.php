@@ -294,6 +294,7 @@ if(isset($_POST["idProducto"])){
 	$traerProducto -> idProducto = $_POST["idProducto"];
 	$traerProducto -> ajaxTraerProducto();
 
+
 }
 
 /*=============================================

@@ -53,7 +53,7 @@ class TablaCategorias{
 			$valor = $categorias[$i]["ruta"];
 
 			$cabeceras = ControladorCabeceras::ctrMostrarCabeceras($item, $valor);
-
+			if($cabeceras!=null)
 			if($cabeceras["portada"] != ""){
 
 				 $imgPortada = "<img class='img-thumbnail imgPortadaCategorias' src='".$cabeceras["portada"]."' width='100px'>";
@@ -102,9 +102,9 @@ class TablaCategorias{
 			/*=============================================
   			CREAR LAS ACCIONES
   			=============================================*/
-	    
+	    if($cabeceras!=null)
 		    $acciones = "<div class='btn-group'><button class='btn btn-warning btnEditarCategoria' idCategoria='".$categorias[$i]["id"]."' data-toggle='modal' data-target='#modalEditarCategoria'><i class='fa fa-pencil'></i></button><button class='btn btn-danger btnEliminarCategoria' idCategoria='".$categorias[$i]["id"]."' imgPortada='".$cabeceras["portada"]."'  rutaCabecera='".$categorias[$i]["ruta"]."' imgOferta='".$categorias[$i]["imgOferta"]."'><i class='fa fa-times'></i></button></div>";
-				    
+			if($cabeceras!=null)    
 			$datosJson	 .= '[
 				      "'.($i+1).'",
 				      "'.$categorias[$i]["categoria"].'",

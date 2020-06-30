@@ -138,6 +138,7 @@ session_start();
 
 <?php
 
+
  if(isset($_SESSION["validarSesionBackend"]) && $_SESSION["validarSesionBackend"] === "ok"){
 
     echo '<div class="wrapper">';
