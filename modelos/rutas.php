@@ -8,7 +8,7 @@ class Ruta{
 
 	public function ctrRuta(){
 
-		return "https://e-commerce.tonohost.com/";
+		return "http://localhost/ecommerce_frontend/";
 	
 	}
 
@@ -18,7 +18,7 @@ class Ruta{
 
 	public function ctrRutaServidor(){
 
-		return "https://adminecommerce.tonohost.com/";
+		return "http://localhost/ecommerce_backend/";
 	
 	}
 
